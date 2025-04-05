@@ -1,7 +1,7 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
-import { Home, Anime, Movies, TvShows, Profile } from './pages/index.jsx';
+import { Home, Anime, Movies, TvShows, Profile, Login } from './pages/index.jsx';
 import {MovieDetails, AnimeDetails, TvShowsDetails} from './components/extendedDetails/'
 import { mediaDataLoader, showsDataLoader, getAnimeDetails } from './utils/index.js';
 import './index.css';
@@ -20,9 +20,9 @@ const router = createBrowserRouter(
         path="/anime"
         loader={async () => {
           const state = store.getState();
-          let trending = state.animes.find(anime => anime.title === "trending")?.data || [];
-          let popular = state.animes.find(anime => anime.title === "popular")?.data || [];
-          let upcoming = state.animes.find(anime => anime.title === "upcoming")?.data || [];
+          let trending = state.media.animes.find(anime => anime.title === "trending")?.data || [];
+          let popular = state.media.animes.find(anime => anime.title === "popular")?.data || [];
+          let upcoming = state.media.animes.find(anime => anime.title === "upcoming")?.data || [];
 
           if (trending.length === 0 || popular.length === 0 || upcoming.length === 0) {
             const res = await getAnimeDetails();
@@ -45,8 +45,8 @@ const router = createBrowserRouter(
         path="/movies"
         loader={async () => {
           const state = store.getState();
-          let trending = state.movies.find(movie => movie.title === "trending")?.data || [];
-          let popular = state.movies.find(movie => movie.title === "popular")?.data || [];
+          let trending = state.media.movies.find(movie => movie.title === "trending")?.data || [];
+          let popular = state.media.movies.find(movie => movie.title === "popular")?.data || [];
 
           if (trending.length === 0) {
             trending = await mediaDataLoader("movies", "trending");
@@ -68,8 +68,8 @@ const router = createBrowserRouter(
   path="/tvshows"
   loader={async () => {
     const state = store.getState();
-    let trending = state.shows.find(show => show.title === "trending")?.data || [];
-    let popular = state.shows.find(show => show.title === "popular")?.data || [];
+    let trending = state.media.shows.find(show => show.title === "trending")?.data || [];
+    let popular = state.media.shows.find(show => show.title === "popular")?.data || [];
 
     if (trending.length === 0) {
       const fetchedTrending = await showsDataLoader("shows", "trending");
@@ -90,6 +90,8 @@ const router = createBrowserRouter(
 
 
       <Route path="/profile" element={<Profile />} />
+      <Route path="/login" element={<Login />} />
+
       <Route path="/movies/:id" element={<MovieDetails />} />
       <Route path='/anime/:id' element={<AnimeDetails />} />
       <Route path='/tvshows/:id' element={<TvShowsDetails />} />

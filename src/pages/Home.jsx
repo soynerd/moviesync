@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { store } from "../app/store";
+import { login, logout } from "../app/loginSlice";
 
 export default function HomePage() {
+  
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-50 to-purple-100 flex flex-col items-center text-center px-6 py-40">
       {/* Animated Intro */}
