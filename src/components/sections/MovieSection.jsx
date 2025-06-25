@@ -31,6 +31,7 @@ function MoviesSection({ trending, popular }) {
                   rating={movieData.rating}
                   genre={movieData.genres}
                   image={movieData.urls.moviePoster[0].url}
+                  media={{type: "movie", section: "trending"}}
                 />
                 </Link>
               ) : null
@@ -54,6 +55,7 @@ function MoviesSection({ trending, popular }) {
                 rating={movieData.rating}
                 genre={movieData.genres}
                 image={movieData.urls.moviePoster[0].url}
+                media={{type: "movie", section: "popular"}}
               />
               </Link>
             ))}

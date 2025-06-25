@@ -22,7 +22,7 @@ function AnimeSection({trending, popular, upcoming}) {
           <div ref={trendingRef} className="flex overflow-x-scroll px-1">
             {trending.map((animeData)=>(
               <Link to={`/anime/${animeData.id}`} key={animeData.id} state={{animeData}}>
-                <Card key={animeData.id} name={animeData.title.english != null ? animeData.title.english : animeData.title.romaji} image={animeData.coverImage.large} time={animeData.duration} rating={animeData.averageScore / 10} genre={animeData.genres}/>
+                <Card key={animeData.id} id={animeData.id} name={animeData.title.english != null ? animeData.title.english : animeData.title.romaji} image={animeData.coverImage.large} time={animeData.duration} rating={animeData.averageScore / 10} genre={animeData.genres} media={{type: "anime", section: "trending"}}/>
               </Link>
             ))}
           </div>
@@ -34,7 +34,7 @@ function AnimeSection({trending, popular, upcoming}) {
           <div ref={popularRef} className="flex overflow-x-scroll px-1">
             {popular.map((animeData)=>(
               <Link to={`/anime/${animeData.id}`} key={animeData.id} state={{animeData}}>
-                <Card key={animeData.id} name={animeData.title.english != null ? animeData.title.english : animeData.title.romaji} image={animeData.coverImage.large} time={animeData.duration} rating={animeData.averageScore / 10} genre={animeData.genres}/>
+                <Card key={animeData.id} id={animeData.id} name={animeData.title.english != null ? animeData.title.english : animeData.title.romaji} image={animeData.coverImage.large} time={animeData.duration} rating={animeData.averageScore / 10} genre={animeData.genres} media={{type: "anime", section: "popular"}}/>
               </Link>
             ))}
           </div>
@@ -46,7 +46,7 @@ function AnimeSection({trending, popular, upcoming}) {
           <div ref={upcomingRef} className="flex overflow-x-scroll px-1">
             {upcoming.map((animeData)=>(
               <Link to={`/anime/${animeData.id}`} key={animeData.id} state={{animeData}}>
-                <Card key={animeData.id} name={animeData.title.english != null ? animeData.title.english : animeData.title.romaji} image={animeData.coverImage.large} time={animeData.duration} rating={animeData.averageScore / 10} genre={animeData.genres}/>
+                <Card key={animeData.id} id={animeData.id} name={animeData.title.english != null ? animeData.title.english : animeData.title.romaji} image={animeData.coverImage.large} time={animeData.duration} rating={animeData.averageScore / 10} genre={animeData.genres} media={{type: "anime", section: "upcoming"}}/>
               </Link>
             ))}
           </div>

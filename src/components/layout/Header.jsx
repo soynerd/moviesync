@@ -13,7 +13,6 @@ const Header = () => {
   const state = store.getState();
   const dispatch = store.dispatch;
   const [loggedIn, setLoggedIn] = useState(state.login.loginDetails.loggedIn);
-  console.log(loggedIn)
   async function logoutUser(){
     const res = await axios.post("http://localhost:3000/auth/logout",{},  {withCredentials: true, headers: {"Content-Type": "application/json",}});
     res.status === 200 && dispatch(logout());
@@ -25,11 +24,8 @@ const Header = () => {
     async function  checkAuthStatus() {
       try {
         const res = await axios.get("http://localhost:3000/auth/auth-status", {withCredentials : true, headers :{"Content-Type": "application/json",}})
-      console.log(res.status)
       if( res.status === 200){
         store.dispatch(login({username : res.data.username}));
-        const temp = store.getState();
-        console.log(temp.login.loginDetails.username, temp.login.loginDetails.loggedIn);
         setLoggedIn(true);
       }else{
         store.dispatch(logout())

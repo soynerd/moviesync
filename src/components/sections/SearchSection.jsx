@@ -30,6 +30,7 @@ function SearchSection({ cardData, name = null }) {
                       }
                       name={mediaData.title}
                       image={mediaData?.urls?.moviePoster[0]?.url}
+                      media={{type: "movie", section: "search"}}
                     />
                   </Link>
                 ) : null;
@@ -45,6 +46,7 @@ function SearchSection({ cardData, name = null }) {
                       seasons={countSeasons(mediaData.seasonDetails)}
                       time={mediaData.averageRuntime}
                       rating={mediaData.rating.average}
+                      media={{type: "tvshow", section: "search"}}
                     />
                   </Link>
                 );
@@ -66,6 +68,7 @@ function SearchSection({ cardData, name = null }) {
                       time={mediaData.duration}
                       rating={mediaData.averageScore / 10}
                       genre={mediaData.genres}
+                      media={{type: "anime", section: "search"}}
                     />
                   </Link>
                 );

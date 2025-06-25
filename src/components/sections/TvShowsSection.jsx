@@ -40,6 +40,7 @@ function TvShowsSection({ trending, popular }) {
                   genre={showData.genres}
                   time={showData.averageRuntime}
                   seasons={countSeasons(showData.seasonDetails)}
+                  media={{type: "tvshow", section: "trending"}}
                 />
               </Link>
             ))}
@@ -60,6 +61,7 @@ function TvShowsSection({ trending, popular }) {
                   genre={showData.genres}
                   time={showData.averageRuntime}
                   seasons={countSeasons(showData.seasonDetails)}
+                  media={{type: "tvshow", section: "popular"}}
                 />
               </Link>
             ))}
